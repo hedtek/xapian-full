@@ -25,7 +25,7 @@ task :default do
 		ENV['LDFLAGS'] = "-R#{prefix}/lib"
 		system! "make clean all"
 		ENV['LDFLAGS'] = ""
-		system! "cp -rL .libs/* ../lib/"
+		system! "cp -RL .libs/* ../lib/"
 	end
 
 	Dir.chdir bindings do
