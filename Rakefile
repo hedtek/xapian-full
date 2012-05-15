@@ -6,7 +6,7 @@ def system!(cmd)
 	system(cmd) or raise
 end
 
-ver = '1.2.9'
+ver = '1.0.23'
 core = "xapian-core-#{ver}"
 bindings = "xapian-bindings-#{ver}"
 xapian_config = "#{Dir.pwd}/#{core}/xapian-config"
@@ -21,7 +21,7 @@ task :default do
 	system! "mkdir -p lib"
 
 	Dir.chdir core do
-		system! "./configure --prefix=#{prefix} --exec-prefix=#{prefix} --disable-documentation --disable-backend-chert --disable-backend-brass --disable-backend-flint "
+		system! "./configure --prefix=#{prefix} --exec-prefix=#{prefix} --disable-documentation --disable-backend-quartz --disable-backend-flint --disable-backend-remote "
 		ENV['LDFLAGS'] = "-R#{prefix}/lib"
 		system! "make clean all"
 		ENV['LDFLAGS'] = ""
