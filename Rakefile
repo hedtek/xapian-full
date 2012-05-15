@@ -21,7 +21,7 @@ task :default do
 	system! "mkdir -p lib"
 
 	Dir.chdir core do
-		system! "./configure --prefix=#{prefix} --exec-prefix=#{prefix} --enable-backend-chert=no --enable-backend-brass=no --enable-backend-flint=no --enable-backend-remote=no "
+		system! "./configure --prefix=#{prefix} --exec-prefix=#{prefix} --disable-backend-chert --disable-backend-brass --disable-backend-flint "
 		ENV['LDFLAGS'] = "-R#{prefix}/lib"
 		system! "make clean all"
 		ENV['LDFLAGS'] = ""
